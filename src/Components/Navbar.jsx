@@ -5,7 +5,17 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Navbar = () => {
 
-   const { user } = useContext(AuthContext);
+   const { user, logOut, loading } = useContext(AuthContext);
+   
+   if (loading) {
+      return <div className="h-screen flex items-center justify-center">
+         <span className="loading loading-dots loading-lg"></span>
+      </div>
+   }
+
+   const handleSignOut = () => {
+      logOut()
+   }
    
    const navLink = <>
       <li><NavLink to='/'>Home</NavLink></li>
@@ -13,8 +23,8 @@ const Navbar = () => {
       <li><NavLink to='/about'>About Us</NavLink></li>
    </>
    return (
-      <div className="lg:px-5">
-         <div className="navbar bg-base-100">
+      <div className="shadow-lg bg-base-100">
+         <div className="navbar shadow-none max-w-screen-2xl m-auto bg-base-100">
             <div className="navbar-start">
                <div className="dropdown">
                   <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -45,7 +55,7 @@ const Navbar = () => {
                            </label>
                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                               <li><a>{user.displayName}</a></li>
-                              <li><Link to='/login'>Sign Out</Link></li>
+                              <li><a onClick={handleSignOut}>Sign Out</a></li>
                            </ul>
                         </div>
                         

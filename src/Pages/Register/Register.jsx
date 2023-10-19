@@ -1,12 +1,19 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { getAuth, updateProfile } from "firebase/auth";
 
 const Register = () => {
 
-   const { createUser } = useContext(AuthContext);
+   const { createUser, loading } = useContext(AuthContext);
    const auth = getAuth();
+   const [error, setError] = useState('')
+   
+   if (loading) {
+      return <div className="h-screen flex items-center justify-center">
+      <span className="loading loading-dots loading-lg"></span>
+   </div>
+   }
 
    const handleSignUp = event => {
       event.preventDefault()
@@ -17,6 +24,18 @@ const Register = () => {
       const password = form.password.value;
       const user = { name, email, photoURL, password }
       console.log(user);
+
+      setError('')
+
+      if (password.length < 6) {
+         setError('Password length must be six!')
+         return
+      }
+
+      if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test) {
+         setError('Password length must be six with one character, one symbol!')
+         return
+      }
       createUser(email, password)
          .then(result => {
             const user = result.user;
@@ -66,9 +85,10 @@ const Register = () => {
                   </label>
                </div>
                <div className="form-control mt-2">
-                  <button className="btn btn-primary w-40 bg-black border-none text-white">Register</button>
+                  <button className="btn btn-primary rounded-none w-40 bg-black border-none text-white hover:text-black hover:bg-white">Register</button>
                </div>
             </form>
+            <p className="text-red-600 font-semibold mt-2">{error}</p>
          </div>
       </div>
    );

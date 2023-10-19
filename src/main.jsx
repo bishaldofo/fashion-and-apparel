@@ -15,6 +15,7 @@ import Register from './Pages/Register/Register';
 import AuthProvider from './AuthProvider/AuthProvider';
 import BrandCard from './Pages/Home/BrandCard';
 import About from './Pages/About/About';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/addProduct',
-        element: <AddProduct></AddProduct>
+        element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
       },
       {
         path: '/about',

@@ -1,6 +1,41 @@
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
+   const { signIn, loading } = useContext(AuthContext);
+   const navigate = useNavigate()
+   const [error, setError] = useState('')
+
+   
+   if (loading) {
+      return <div className="h-screen flex items-center justify-center">
+         <span className="loading loading-dots loading-lg"></span>
+      </div>
+   }
+
+   const handleSignIn = event => {
+      event.preventDefault();
+      const form = event.target;
+      const email = form.email.value;
+      const password = form.password.value;
+      console.log(email, password);
+
+      setError('')
+
+      signIn(email, password)
+         .then(result => {
+            console.log(result.user)
+            navigate('/')
+         })
+         .catch(error => {
+            console.error(error)
+            setError('Email and password does not match!')
+            form.reset()
+            return
+         })
+   }
+
    return (
       <div className="max-w-7xl m-auto pt-20 pb-40 px-4">
          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -13,7 +48,7 @@ const Login = () => {
                   <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
                   <div className="form-control mt-2">
                      <Link to='/register'>
-                        <button className="btn btn-primary w-40 bg-black border-none text-white">Continue</button>
+                        <button className="btn btn-primary rounded-none w-40 bg-black border-none text-white hover:text-black hover:bg-white">Continue</button>
                      </Link>
                   </div>
                </div>
@@ -22,7 +57,7 @@ const Login = () => {
             <div className="p-5 border space-y-4">
                <h3>Returning Customer</h3>
                <p>I am a returning customer</p>
-               <form className="card-body p-0">
+               <form onSubmit={handleSignIn} className="card-body p-0">
                   <div className="form-control">
                      <label className="label p-0">
                         <span className="label-text">Your email address</span>
@@ -39,9 +74,10 @@ const Login = () => {
                      </label>
                   </div>
                   <div className="form-control mt-2">
-                     <button className="btn btn-primary w-40 bg-black border-none text-white">Login</button>
+                     <button className="btn btn-primary rounded-none w-40 bg-black border-none text-white hover:text-black hover:bg-white">Login</button>
                   </div>
                </form>
+               <p className="text-red-600 mt-2 font-semibold">{error}</p>
             </div>
 
          </div>
