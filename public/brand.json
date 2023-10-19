@@ -1,0 +1,38 @@
+[
+   {
+     "id": 1,
+     "name": "Nike",
+     "image": "https://i.ibb.co/PTrLLZK/Nike-Logo.png",
+     "title": "Just Do It with Nike"
+   },
+   {
+     "id": 2,
+     "name": "Adidas",
+     "image": "https://i.ibb.co/zsc9hh6/Original-Adidas-logo.png",
+     "title": "Unleash Your Potential with Adidas"
+   },
+   {
+     "id": 3,
+     "name": "Gucci",
+     "image": "https://i.ibb.co/vBPsMz5/gucci.png",
+     "title": "Elegance Redefined with Gucci"
+   },
+   {
+     "id": 4,
+     "name": "Zara",
+     "image": "https://i.ibb.co/HKZy1qS/Zara-log.png",
+     "title": "Chic & Affordable Fashion at Zara"
+   },
+   {
+     "id": 5,
+     "name": "H&M",
+     "image": "https://i.ibb.co/JdZPpWb/H-M-Logo.png",
+     "title": "Fashion for All at H&M"
+   },
+   {
+     "id": 6,
+     "name": "Levi's",
+     "image": "https://i.ibb.co/hKCVSmR/Levis-Logo.png",
+     "title": "Timeless Denim by Levi's"
+   }
+ ]

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
    return (
-      <div className="max-w-7xl m-auto pt-20 pb-40">
+      <div className="max-w-7xl m-auto pt-20 pb-40 px-4">
          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
             <div>

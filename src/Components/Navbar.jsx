@@ -2,13 +2,14 @@ import { Link, NavLink } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
-
+   
    const navLink = <>
       <li><NavLink to='/'>Home</NavLink></li>
       <li><NavLink to='/addProduct'>Add Product</NavLink></li>
+      <li><NavLink to='/about'>About Us</NavLink></li>
    </>
    return (
-      <div className="px-5">
+      <div className="lg:px-5">
          <div className="navbar bg-base-100">
             <div className="navbar-start">
                <div className="dropdown">
@@ -19,7 +20,7 @@ const Navbar = () => {
                      {navLink}
                   </ul>
                </div>
-               <Link to='/'><img className="w-28" src="https://i.ibb.co/mXXYVLK/logo.jpg" alt="" /></Link>
+               <Link to='/'><h2 className="text-lg lg:text-2xl font-semibold">Fashion and Apparel</h2></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                <ul className="menu menu-horizontal px-1">

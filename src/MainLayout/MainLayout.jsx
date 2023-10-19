@@ -5,12 +5,10 @@ import Header from "../Components/Header";
 
 const MainLayout = () => {
    return (
-      <div>
+      <div className="bg-[#F9F9F9]">
          <Header></Header>
          <Navbar></Navbar>
-         <div className="max-w-screen-2xl m-auto">
-            <Outlet></Outlet>
-         </div>
+         <Outlet></Outlet>
          <Footer></Footer>
       </div>
    );

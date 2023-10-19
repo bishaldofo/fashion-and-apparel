@@ -12,6 +12,8 @@ import AddProduct from './Pages/AddProduct/AddProduct';
 import Login from './Pages/Login/Login';
 import MyCart from './Pages/MyCart/MyCart';
 import Register from './Pages/Register/Register';
+import AuthProvider from './AuthProvider/AuthProvider';
+import BrandCard from './Pages/Home/BrandCard';
 
 const router = createBrowserRouter([
   {
@@ -21,7 +23,12 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home></Home>
+        element: <Home></Home>,
+        loader: () => fetch('/brand.json')
+      },
+      {
+        path: '/brand',
+        element: <BrandCard></BrandCard>,
       },
       {
         path: '/addProduct',
@@ -38,13 +45,15 @@ const router = createBrowserRouter([
       {
         path: '/myCart',
         element: <MyCart></MyCart>
-      }
+      },
     ]
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )
