@@ -13,7 +13,7 @@ const Home = () => {
       <div>
          <Banner></Banner>
          <div className="py-20 px-5">
-            <h1 className="text-5xl text-center font-semibold">Discover Top Brands</h1>
+            <h1 className="text-2xl md:text-5xl text-center font-semibold">Discover Top Brands</h1>
             <p className="text-center mt-6 m-auto w-full lg:max-w-3xl">Explore our curated selection of top fashion brands, from athletic gear to high-end luxury, and find your perfect style statement. Elevate your wardrobe with Nike, Gucci, and more.</p>
             <div className="max-w-7xl m-auto mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                {

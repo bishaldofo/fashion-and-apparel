@@ -2,9 +2,9 @@ import { FaTruck, FaHeadphones } from "react-icons/fa";
 
 const FreeShipping = () => {
    return (
-      <div className="max-w-7xl py-10 m-auto">
+      <div className="max-w-7xl py-5 md:py-10 m-auto px-5">
          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="card card-compact bg-base-100 rounded-none p-10 space-y-3">
+            <div className="card card-compact bg-base-100 rounded-none p-5 lg:p-10 space-y-3">
                <div className="text-center"><FaTruck className="text-5xl m-auto"></FaTruck></div>
                <div className="text-center space-y-3">
                   <h2 className="text-center text-xl font-bold">Free Shipping</h2>
@@ -15,7 +15,7 @@ const FreeShipping = () => {
                   </div>
                </div>
             </div>
-            <div className="card card-compact bg-base-100 rounded-none p-10 space-y-3">
+            <div className="card card-compact bg-base-100 rounded-none p-5 lg:p-10 space-y-3">
                <div className="text-center"><FaHeadphones className="text-5xl m-auto"></FaHeadphones></div>
                <div className="text-center space-y-3">
                   <h2 className="text-center text-xl font-bold">Free Returns</h2>

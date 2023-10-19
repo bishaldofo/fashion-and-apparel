@@ -14,6 +14,7 @@ import MyCart from './Pages/MyCart/MyCart';
 import Register from './Pages/Register/Register';
 import AuthProvider from './AuthProvider/AuthProvider';
 import BrandCard from './Pages/Home/BrandCard';
+import About from './Pages/About/About';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/addProduct',
         element: <AddProduct></AddProduct>
+      },
+      {
+        path: '/about',
+        element: <About></About>
       },
       {
         path: '/login',
