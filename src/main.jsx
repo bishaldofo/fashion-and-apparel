@@ -15,7 +15,7 @@ import Register from './Pages/Register/Register';
 import AuthProvider from './AuthProvider/AuthProvider';
 import BrandCard from './Pages/Home/BrandCard';
 import About from './Pages/About/About';
-import PrivateRoute from './PrivateRoute/PrivateRoute';
+import BrandProductCard from './Pages/BrandProductCard/BrandProductCard';
 
 const router = createBrowserRouter([
   {
@@ -29,9 +29,15 @@ const router = createBrowserRouter([
         loader: () => fetch('/brand.json')
       },
       {
-        path: '/brand',
+        path: '/products/:brand', // Use the same path as in BrandCard
         element: <BrandCard></BrandCard>,
+        loader: ({ params }) => fetch(`http://localhost:5000/products/${params.brand}`)
       },
+      {
+        path: '/product-details/:brand',
+        element: <BrandProductCard></BrandProductCard>,
+        loader: ({ params }) => fetch(`http://localhost:5000/products/brand/${params.brand}`)
+      },    
       {
         path: '/addProduct',
         element: <AddProduct></AddProduct>
