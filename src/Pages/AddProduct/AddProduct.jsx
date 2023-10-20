@@ -17,12 +17,25 @@ const AddProduct = () => {
       const productName = form.productName.value;
       const productPhoto = form.productPhoto.value;
       const brandName = form.brandName.value;
+      setBrand(brandName)
       const price = form.price.value;
       const ratings = form.ratings.value;
       const description = form.description.value;
 
-      const productInfo = { productName, productPhoto, brandName, price, ratings, description }
-      console.log(productInfo);
+      const product = { productName, productPhoto, brandName, price, ratings, description }
+      console.log(product);
+
+      fetch('http://localhost:5000/products', {
+         method: 'POST',
+         headers: {
+            'content-type': 'application/json'
+         },
+         body: JSON.stringify(product)
+      })
+         .then(res => res.json())
+         .then(data => {
+            console.log(data)
+         })
    }
 
    return (
