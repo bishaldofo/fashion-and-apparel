@@ -4,6 +4,7 @@ import BrandCard from "./BrandCard";
 import FreeShipping from "./FreeShipping";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import HomeSlider from "../../Components/HomeSlider";
 
 const Home = () => {
    const allBrand = useLoaderData()
@@ -28,6 +29,8 @@ const Home = () => {
                }
             </div>
          </div>
+         <HomeSlider></HomeSlider>
+
          <FreeShipping></FreeShipping>
       </div>
    );
