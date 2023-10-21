@@ -16,6 +16,9 @@ import AuthProvider from './AuthProvider/AuthProvider';
 import BrandCard from './Pages/Home/BrandCard';
 import About from './Pages/About/About';
 import BrandProductCard from './Pages/BrandProductCard/BrandProductCard';
+import UpdateProduct from './UpdateProduct/UpdateProduct';
+import ProductDetails from './ProductDetails/ProductDetails';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -29,18 +32,32 @@ const router = createBrowserRouter([
         loader: () => fetch('/brand.json')
       },
       {
-        path: '/products/:brand', // Use the same path as in BrandCard
+        path: '/:brand', // Use the same path as in BrandCard
         element: <BrandCard></BrandCard>,
-        loader: ({ params }) => fetch(`http://localhost:5000/products/${params.brand}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/${params.brand}`)
       },
       {
-        path: '/product-details/:brand',
+        path: '/brand/:brand',
         element: <BrandProductCard></BrandProductCard>,
-        loader: ({ params }) => fetch(`http://localhost:5000/products/brand/${params.brand}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/brand/${params.brand}`)
       },    
       {
         path: '/addProduct',
-        element: <AddProduct></AddProduct>
+        element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
+      },
+      {
+        path: '/productDetails/:id',
+        element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+      },
+      {
+        path: '/updateProduct/:id',
+        element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+      },  
+      {
+        path: '/addToCart',
+        element: <MyCart></MyCart>
       },
       {
         path: '/about',

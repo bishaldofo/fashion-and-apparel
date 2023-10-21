@@ -6,7 +6,7 @@ const BrandCard = ({ brand }) => {
   return (
     <div>
       <div className="card rounded-md bg-base-100 border py-8 shadow-lg">
-        <Link to={`/product-details/${name}`}> {/* Use a different path */}
+        <Link to={`/brand/${name}`}> {/* Use a different path */}
           <figure>
             <img className="h-20" src={image} alt={name} />
           </figure>

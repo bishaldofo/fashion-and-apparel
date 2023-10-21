@@ -42,21 +42,23 @@ const Navbar = () => {
                </ul>
             </div>
             <div className="navbar-end">
-               <div className="flex justify-between items-center gap-3">
-                  <div><Link to='/myCart'><FaShoppingCart></FaShoppingCart></Link></div>
+               <div className="flex justify-between items-center gap-5">
+                  <div><Link to='/myCart'><FaShoppingCart className="text-2xl"></FaShoppingCart></Link></div>
                   <div>
                      {
                         user ?
-                        <div className="dropdown dropdown-end">
-                           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                           <div className="w-10 rounded-full">
-                              <img src={user.photoURL} />
-                           </div>
-                           </label>
-                           <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                              <li><a>{user.displayName}</a></li>
-                              <li><a onClick={handleSignOut}>Sign Out</a></li>
-                           </ul>
+                        <div className="flex items-center gap-5">
+                           <div className="text-lg font-semibold">{user.displayName}</div>
+                           <div className="dropdown dropdown-end">
+                              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                 <div className="w-10 rounded-full">
+                                    <img src={user.photoURL} />
+                                 </div>
+                              </label>
+                              <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                                 <li><a onClick={handleSignOut}>Sign Out</a></li>
+                              </ul>
+                           </div>    
                         </div>
                         
                         :
